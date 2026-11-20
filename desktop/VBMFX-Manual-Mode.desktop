@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=VBMFX Report - Manual Mode
+Comment=Stop automatic VBMFX reports (Run Now still works)
+Exec=/home/user/.local/bin/vbmfx-mode manual
+Icon=media-playback-pause
+Terminal=false
+Categories=Utility;

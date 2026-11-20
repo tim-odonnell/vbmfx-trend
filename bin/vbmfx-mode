@@ -1,0 +1,31 @@
+#!/bin/bash
+# vbmfx-mode - switch the VBMFX trend report between manual (Run Now icon only) and nightly automatic runs.
+# Usage: vbmfx-mode manual | nightly | status
+set -u
+MODE_FILE="$HOME/.config/vbmfx-trend/run-mode"
+mkdir -p "$(dirname "$MODE_FILE")"
+case "${1:-}" in
+    manual)
+        systemctl --user disable --now vbmfx-report.timer
+        echo manual > "$MODE_FILE"
+        notify-send -a "VBMFX trend" -i media-playback-pause "VBMFX report: MANUAL mode" "It runs only when you double-click VBMFX Report - Run Now."
+        ;;
+    nightly)
+        systemctl --user daemon-reload
+        systemctl --user enable --now vbmfx-report.timer
+        echo nightly > "$MODE_FILE"
+        next=$(systemctl --user show vbmfx-report.timer -p NextElapseUSecRealtime --value)
+        notify-send -a "VBMFX trend" -i appointment-soon "VBMFX report: NIGHTLY mode" "Runs automatically Mon-Fri at 02:14. Next: ${next:-?}"
+        ;;
+    status)
+        echo "Mode: $(cat "$MODE_FILE" 2>/dev/null || echo 'not set (manual)')"
+        echo "Timer: $(systemctl --user is-enabled vbmfx-report.timer 2>/dev/null)"
+        systemctl --user list-timers vbmfx-report.timer --no-pager | sed -n 1,2p
+        echo "Last run: $(journalctl --user -u vbmfx-report.service -o short-iso --no-pager 2>/dev/null | grep -E 'Finished|Failed' | tail -1 | cut -c1-19)"
+        ls -1t "$HOME/VBMFX-Reports"/*.html 2>/dev/null | grep -v latest | head -1 | sed 's/^/Newest report: /'
+        ;;
+    *)
+        echo "Usage: vbmfx-mode manual | nightly | status" >&2
+        exit 1
+        ;;
+esac

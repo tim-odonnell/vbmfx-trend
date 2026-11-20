@@ -1,0 +1,10 @@
+#!/bin/bash
+# vbmfx-run-now - make today's VBMFX trend report now (desktop icon "VBMFX Report - Run Now").
+# Runs the same systemd unit as nightly mode, so it can't run twice at once and a closed terminal can't kill it.
+if systemctl --user is-active --quiet vbmfx-report.service; then
+    notify-send -a "VBMFX trend" "VBMFX report" "Already running - the pop-up will appear when it is done."
+    exit 0
+fi
+systemctl --user daemon-reload
+notify-send -a "VBMFX trend" -i x-office-spreadsheet "VBMFX report" "Downloading prices and fitting the trends..."
+systemctl --user start --no-block vbmfx-report.service

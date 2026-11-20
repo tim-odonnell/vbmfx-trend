@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=VBMFX Report - Nightly Auto
+Comment=Make the VBMFX report automatically every weekday at 02:14
+Exec=/home/user/.local/bin/vbmfx-mode nightly
+Icon=appointment-soon
+Terminal=false
+Categories=Utility;
