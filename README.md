@@ -20,7 +20,7 @@ ordinary investors, started 1986-12-11) **above or below its trend** over 1 mont
 | Command / icon | What it does |
 |---|---|
 | `vbmfx-run-now` / **VBMFX Report - Run Now** | make the report now |
-| `vbmfx-mode nightly` / **VBMFX Report - Nightly Auto** | run automatically Mon-Fri 02:14 (a missed run is made at next boot) |
+| `vbmfx-mode nightly` / **VBMFX Report - Nightly Auto** | run automatically Tue-Sat 02:14 (a missed run is made at next boot) |
 | `vbmfx-mode manual` / **VBMFX Report - Manual Mode** | no automatic runs (the default after install) |
 | `vbmfx-mode status` | mode, next run, last run, newest report |
 | `vbmfx-trend --json FILE --now 2026-11-20T07:00 --out DIR` | offline test run |

@@ -1,8 +1,8 @@
 [Unit]
-Description=VBMFX vs trend report, Mon-Fri 02:14 (uses the previous trading day's close)
+Description=VBMFX vs trend report, Tue-Sat 02:14 (uses the previous trading day's close)
 
 [Timer]
-OnCalendar=Mon..Fri *-*-* 02:14:00
+OnCalendar=Tue..Sat *-*-* 02:14:00
 # no LLM involved and it takes seconds: a run missed while the laptop was off is made at the next boot
 Persistent=true
 RandomizedDelaySec=2min
