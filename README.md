@@ -27,3 +27,11 @@ ordinary investors, started 1986-12-11) **above or below its trend** over 1 mont
 
 Install: `./install.sh`. Trend lines are fitted to past prices; they are not a forecast and not financial advice.
 Copied from vfinx-trend (2026-11-20).
+
+## License
+
+**The Median Line License (draft)** — free to use until your income exceeds the
+median household income of the ZIP code you live in; above that line you
+contribute a small share of what the software helped you earn, never enough to
+pull you back below the line. Trust-based: no reporting, no audits. See
+[LICENSE](LICENSE) and [the license project](https://github.com/tim-odonnell/median-line-license).
